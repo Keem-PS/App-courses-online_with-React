@@ -12,7 +12,7 @@ function HomePage() {
     return <div>กำลังโหลดข้อมูล...</div>;
   }
 
-  const categories = Array.from(new Set(courses.map((course) => course.category)));
+  const categories = Array.from(new Set(courses.map((course) => course.category))); // ใช้กับกรณีที่มีข้อมูลซ้ำกัน
 
   const filteredCourses = selectedCategory
     ? courses.filter((course) => course.category === selectedCategory)

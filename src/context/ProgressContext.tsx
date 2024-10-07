@@ -1,19 +1,22 @@
 // src/context/ProgressContext.tsx
 import React, { createContext, useState, useEffect } from 'react';
 
+// กำหนดประเภทข้อมูลสำหรับ ProgressContext
 interface ProgressContextType {
-  progress: { [courseId: string]: { [lectureId: string]: boolean } };
-  updateProgress: (courseId: string, lectureId: string) => void;
-  isLectureCompleted: (courseId: string, lectureId: string) => boolean;
+  progress: { [courseId: string]: { [lectureId: string]: boolean } }; // สถานะของการเรียนแต่ละบทเรียน
+  updateProgress: (courseId: string, lectureId: string) => void; // ฟังก์ชันสำหรับอัปเดตความคืบหน้า
+  isLectureCompleted: (courseId: string, lectureId: string) => boolean; // ฟังก์ชันสำหรับตรวจสอบสถานะการเรียน
 }
 
+// สร้าง Context
 export const ProgressContext = createContext<ProgressContextType>({
   progress: {},
   updateProgress: () => {},
   isLectureCompleted: () => false,
 });
 
-export const ProgressProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+// สร้าง Provider
+export function ProgressProvider( { children } :{ children: React.ReactNode })  {
   const [progress, setProgress] = useState<{ [courseId: string]: { [lectureId: string]: boolean } }>(
     {}
   );
@@ -25,6 +28,7 @@ export const ProgressProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   }, []);
 
+  // ฟังก์ชันสำหรับอัปเดตความคืบหน้าเมื่อผู้ใช้เรียนบทเรียนเสร็จ
   const updateProgress = (courseId: string, lectureId: string) => {
     const courseProgress = progress[courseId] || {};
     const newCourseProgress = { ...courseProgress, [lectureId]: true };

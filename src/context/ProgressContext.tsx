@@ -1,5 +1,5 @@
 // src/context/ProgressContext.tsx
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
 
 // กำหนดประเภทข้อมูลสำหรับ ProgressContext
 interface ProgressContextType {
@@ -16,13 +16,13 @@ export const ProgressContext = createContext<ProgressContextType>({
 });
 
 // สร้าง Provider
-export function ProgressProvider( { children } :{ children: React.ReactNode })  {
-  const [progress, setProgress] = useState<{ [courseId: string]: { [lectureId: string]: boolean } }>(
-    {}
-  );
+export function ProgressProvider({ children }: { children: React.ReactNode }) {
+  const [progress, setProgress] = useState<{
+    [courseId: string]: { [lectureId: string]: boolean };
+  }>({});
 
   useEffect(() => {
-    const storedProgress = localStorage.getItem('user_progress');
+    const storedProgress = localStorage.getItem("user_progress");
     if (storedProgress) {
       setProgress(JSON.parse(storedProgress));
     }
@@ -34,7 +34,7 @@ export function ProgressProvider( { children } :{ children: React.ReactNode })  
     const newCourseProgress = { ...courseProgress, [lectureId]: true };
     const newProgress = { ...progress, [courseId]: newCourseProgress };
     setProgress(newProgress);
-    localStorage.setItem('user_progress', JSON.stringify(newProgress));
+    localStorage.setItem("user_progress", JSON.stringify(newProgress));
   };
 
   const isLectureCompleted = (courseId: string, lectureId: string) => {
@@ -42,8 +42,10 @@ export function ProgressProvider( { children } :{ children: React.ReactNode })  
   };
 
   return (
-    <ProgressContext.Provider value={{ progress, updateProgress, isLectureCompleted }}>
+    <ProgressContext.Provider
+      value={{ progress, updateProgress, isLectureCompleted }}
+    >
       {children}
     </ProgressContext.Provider>
   );
-};
+}

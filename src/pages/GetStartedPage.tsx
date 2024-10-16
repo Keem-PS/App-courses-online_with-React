@@ -1,25 +1,25 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function GetStartedPage() {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate('/home'); // นำทางไปยังหน้า Home หรือหน้าหลักของแอป
+    navigate("/home"); // นำทางไปยังหน้า Home หรือหน้าหลักของแอป
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to Our App!</h1>
-        <p className="text-lg text-gray-600 mb-6">
-          This is a platform that helps you learn and grow. Let's get started on your journey!
-        </p>
-        <button
-          onClick={handleGetStarted}
-          className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-        >
-          Get Started
+    <div className="container mx-auto h-screen flex items-center justify-center ">
+      <div className="text-center p-4">
+      <img src="https://foundr.com/wp-content/uploads/2023/04/How-to-create-an-online-course.jpg.webp" alt="" className="shadow-lg rounded-full sm:h-96"/>
+      <div>
+      <h1 className="text-2xl font-bold mt-4 sm:text-4xl">
+          Welcome to <span className="text-indigo-600">Courses Online <i className="fa-brands fa-discourse"></i></span>
+        </h1>
+        <button onClick={handleGetStarted} className="mt-4 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-full transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
+          Get Started <i className="fa-solid fa-arrow-right"></i>
         </button>
+      </div>
+
       </div>
     </div>
   );

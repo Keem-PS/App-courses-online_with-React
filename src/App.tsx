@@ -1,5 +1,3 @@
-// src/App.tsx
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { CourseProvider } from './context/CourseContext';
 import { ProgressProvider } from './context/ProgressContext';
@@ -8,7 +6,7 @@ import CoursePage from './pages/CoursePage';
 import LecturePage from './pages/LecturePage';
 import GetStartedPage from './pages/GetStartedPage';
 
-const App: React.FC = () => {
+function App() {
   return (
     <CourseProvider>
       <ProgressProvider>

@@ -9,7 +9,7 @@ function CategoryFilter({categories, selectedCategory, onSelectCategory}: Catego
     <div className="flex flex-wrap justify-center sm:justify-start space-x-2 mb-4">
       <button
         onClick={() => onSelectCategory('')}
-        className={`px-3 py-1 rounded ${selectedCategory === '' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+        className={`px-3 py-1 rounded-full ${selectedCategory === '' ? 'bg-indigo-600 text-white' : 'bg-gray-200'}`}
       >
         ทั้งหมด
       </button>
@@ -17,8 +17,8 @@ function CategoryFilter({categories, selectedCategory, onSelectCategory}: Catego
         <button
           key={category}
           onClick={() => onSelectCategory(category)}
-          className={`px-3 py-1 rounded ${
-            selectedCategory === category ? 'bg-blue-500 text-white' : 'bg-gray-200'
+          className={`px-3 py-1 rounded-full ${
+            selectedCategory === category ? 'bg-indigo-600 text-white' : 'bg-gray-200'
           }`}
         >
           {category}
